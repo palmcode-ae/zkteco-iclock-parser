@@ -1,0 +1,46 @@
+{
+	"name": "zkteco-iclock-parser",
+	"version": "0.0.1",
+	"description": "A TypeScript/JavaScript parser for ZKTeco iClock protocol attendance data with type safety and comprehensive error handling",
+	"main": "dist/index.js",
+	"types": "dist/index.d.ts",
+	"files": ["dist", "examples", "README.md", "LICENSE"],
+	"scripts": {
+		"build": "bunx tsc",
+		"dev": "bunx tsc --watch",
+		"prepublishOnly": "bun run build",
+		"test": "bun test",
+		"example:basic": "bun run examples/basic-usage.js",
+		"example:server": "bun run examples/bun-server.ts"
+	},
+	"keywords": [
+		"zkteco",
+		"iclock",
+		"attendance",
+		"parser",
+		"biometric",
+		"access-control",
+		"fingerprint",
+		"face-recognition",
+		"typescript",
+		"push-protocol"
+	],
+	"author": "palmcode.ae",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/palmcode-ae/zkteco-iclock-parser.git"
+	},
+	"bugs": {
+		"url": "https://github.com/palmcode-ae/zkteco-iclock-parser/issues"
+	},
+	"homepage": "https://github.com/palmcode-ae/zkteco-iclock-parser#readme",
+	"devDependencies": {
+		"@types/bun": "latest",
+		"@types/node": "24.3.0",
+		"typescript": "5.9.2"
+	},
+	"engines": {
+		"node": ">=16.0.0"
+	}
+}
