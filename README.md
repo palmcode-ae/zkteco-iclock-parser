@@ -19,13 +19,13 @@ A robust TypeScript/JavaScript parser for ZKTeco iClock protocol attendance data
 ### Installation
 
 ```bash
-npm install zkteco-iclock-parser
+npm install @palmcode/zkteco-iclock-parser
 ```
 
 ### Basic Usage
 
 ```javascript
-const { ZKTecoiClockParser } = require('zkteco-iclock-parser');
+const { ZKTecoiClockParser } = require('@palmcode/zkteco-iclock-parser');
 
 // Parse attendance data from ZKTeco device
 const attendanceData = '11\t2025-08-27 10:57:49\t0\t25\t0\t0\t0\t0\t0\t0';
@@ -43,7 +43,7 @@ if (result.success) {
 ### TypeScript Usage
 
 ```typescript
-import { ZKTecoiClockParser, AttendanceLog, VerifyType } from 'zkteco-iclock-parser';
+import { ZKTecoiClockParser, AttendanceLog, VerifyType } from '@palmcode/zkteco-iclock-parser';
 
 const result = ZKTecoiClockParser.parseAttendanceLog(data);
 
@@ -86,7 +86,7 @@ Parse device information from HTTP query parameters.
 ### Bun Server
 
 ```javascript
-import { ZKTecoiClockParser } from 'zkteco-iclock-parser';
+import { ZKTecoiClockParser } from '@palmcode/zkteco-iclock-parser';
 
 Bun.serve({
   port: 3010,
@@ -107,7 +107,7 @@ Bun.serve({
 
 ```javascript
 const express = require('express');
-const { ZKTecoiClockParser } = require('zkteco-iclock-parser');
+const { ZKTecoiClockParser } = require('@palmcode/zkteco-iclock-parser');
 
 const app = express();
 app.use(express.text());
