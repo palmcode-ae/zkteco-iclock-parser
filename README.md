@@ -2,8 +2,9 @@
 
 A robust TypeScript/JavaScript parser for ZKTeco iClock protocol attendance data with perfect type safety and comprehensive error handling.
 
-[![npm version](https://badge.fury.io/js/zkteco-iclock-parser.svg)](https://www.npmjs.com/package/zkteco-iclock-parser)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![npm version](https://img.shields.io/npm/v/@palmcode/zkteco-iclock-parser.svg)](https://www.npmjs.com/package/@palmcode/zkteco-iclock-parser)
+[![npm downloads](https://img.shields.io/npm/dm/@palmcode/zkteco-iclock-parser.svg)](https://www.npmjs.com/package/@palmcode/zkteco-iclock-parser)
+[![license: MIT](https://img.shields.io/badge/license-MIT-yellow.svg)](./LICENSE)
 
 ## ✨ Features
 
