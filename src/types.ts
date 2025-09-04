@@ -63,4 +63,5 @@ export interface ParserOptions {
 	strictMode?: boolean;
 	includeRawData?: boolean;
 	timestampFormat?: "auto" | "iso" | "custom";
+	timezoneOffset?: number;
 }

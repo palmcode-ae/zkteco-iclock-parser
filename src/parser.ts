@@ -33,22 +33,32 @@ export class ZKTecoiClockParser {
 	};
 
 	/**
-	 * Parse a timestamp string into a Date.
+	 * Parse a timestamp string into a Date, treating it as device local time.
 	 *
-	 * - Accepts common formats like `YYYY-MM-DD HH:mm:ss`.
-	 * - Falls back to replacing `/` with `-` and retrying.
-	 *
-	 * @param timestampStr String timestamp from the device
+	 * @param timestampStr String timestamp from the device (e.g., "2025-09-04 16:14:09")
+	 * @param timezoneOffset Timezone offset from UTC in hours (e.g., +4 for Dubai, -5 for EST)
 	 * @returns Date instance or null when invalid
 	 */
-	private static parseTimestamp(timestampStr: string): Date | null {
+	private static parseTimestamp(
+		timestampStr: string,
+		timezoneOffset = 4,
+	): Date | null {
 		if (!timestampStr) return null;
-		let date = new Date(timestampStr);
-		if (!Number.isNaN(date.getTime())) return date;
-		const normalized = timestampStr.replace(/\//g, "-");
-		date = new Date(normalized);
-		if (!Number.isNaN(date.getTime())) return date;
-		return null;
+		try {
+			let clean = timestampStr.trim().replace(/\//g, "-");
+			let date = new Date(clean);
+			if (Number.isNaN(date.getTime())) {
+				clean = clean.replace(" ", "T");
+				date = new Date(clean);
+				if (Number.isNaN(date.getTime())) return null;
+			}
+			const serverOffsetMin = date.getTimezoneOffset();
+			const deviceOffsetMin = -timezoneOffset * 60;
+			const offsetDifferenceMin = deviceOffsetMin - serverOffsetMin;
+			return new Date(date.getTime() + offsetDifferenceMin * 60 * 1000);
+		} catch {
+			return null;
+		}
 	}
 
 	/**
@@ -140,7 +150,10 @@ export class ZKTecoiClockParser {
 			const timestampStr = parts[1]?.trim();
 			if (!timestampStr) return { success: false, error: "Missing timestamp" };
 
-			const timestamp = ZKTecoiClockParser.parseTimestamp(timestampStr);
+			const timestamp = ZKTecoiClockParser.parseTimestamp(
+				timestampStr,
+				options.timezoneOffset ?? 4,
+			);
 			if (!timestamp)
 				return {
 					success: false,

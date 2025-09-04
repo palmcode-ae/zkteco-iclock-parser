@@ -1,6 +1,6 @@
 {
 	"name": "@palmcode/zkteco-iclock-parser",
-	"version": "0.0.2",
+	"version": "0.0.4",
 	"description": "A TypeScript/JavaScript parser for ZKTeco iClock protocol attendance data with type safety and comprehensive error handling",
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
